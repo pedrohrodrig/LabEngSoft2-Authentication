@@ -1,0 +1,48 @@
+version: '1'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    restart: always
+    environment:
+      - DEBUG
+      - DJANGO_SECRET_KEY
+      - ALLOWED_HOSTS
+      - DB_ENGINE
+      - DB_USER
+      - DB_PASSWORD
+      - DB_HOST
+      - DB_PORT
+      - DB_NAME
+      - DEPLOY_ENV
+    ports:
+      - ${SERVICE_PORT:-8002}:8000
+    profiles:
+      - dev
+    depends_on:
+      - my-postgres
+    networks:
+      - auth
+
+  my-postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5434:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - auth
+
+volumes:
+  data:
+
+networks:
+  auth:
+    driver: bridge

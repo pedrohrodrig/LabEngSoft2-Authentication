@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+psycopg2-binary = "*"
+psycopg-binary = "*"
+djangorestframework-simplejwt = "*"
+
+[dev-packages]
+pre-commit = "~=2.17"
+black = "~=22.6"
+isort = "~=5.10"
+
+[requires]
+python_version = "3.10"
