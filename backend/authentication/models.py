@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 
+from .managers import UserManager
+
 # Create your models here.
 class Roles(models.IntegerChoices):
     ADMIN = 0, "Administrador"
@@ -21,7 +23,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    role = models.IntegerField(choices=Roles.choices, blank=False, null=False)
+    role = models.IntegerField(choices=Roles.choices, blank=False, null=False, default=Roles.OTHERS)
+
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
