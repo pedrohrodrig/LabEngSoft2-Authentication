@@ -14,6 +14,7 @@ from .validators import (
 
 # Create your views here.
 class UserView(ModelViewSet):
+    queryset = User.objects.all()
     
     def register(self, request):
         serializer = UserSerializer(request.data)
