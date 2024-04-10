@@ -10,7 +10,6 @@ psycopg2-binary = "*"
 psycopg-binary = "*"
 djangorestframework-simplejwt = "*"
 whitenoise = "*"
-psycopg2 = "*"
 python-dotenv = "*"
 
 [dev-packages]
