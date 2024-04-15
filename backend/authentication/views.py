@@ -17,11 +17,12 @@ class UserView(ModelViewSet):
     queryset = User.objects.all()
     
     def register(self, request):
-        serializer = UserSerializer(request.data)
+        serializer = UserSerializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         user_data = serializer.validated_data
+        user_data['password_confirmation'] = request.data['password_confirmation']
 
         duplicated_email_validation(user_data["email"])
         password_confirmation_validation(user_data["password"], user_data["password_confirmation"])
