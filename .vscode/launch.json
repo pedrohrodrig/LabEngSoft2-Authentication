@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "C:\\Users\\phrdv\\.virtualenvs\\backend-Ulv8Gcgj\\Scripts\\python.exe",
+            "pythonPath": "C:\\Users\\phrdv\\.virtualenvs\\backend-sd0hKFG9\\Scripts\\python.exe",
             "program": "${workspaceFolder}\\backend\\manage.py",
             "args": [
                 "runserver",
