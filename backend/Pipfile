@@ -11,7 +11,6 @@ psycopg-binary = "*"
 djangorestframework-simplejwt = "*"
 whitenoise = "*"
 python-dotenv = "*"
-psycopg2 = "*"
 
 [dev-packages]
 pre-commit = "~=2.17"
